@@ -3,12 +3,13 @@ provider "aws" {
 }
 
 module "alarms" {
-    source = "../"
-    namespace = "cp"
- stage = "prod"
- name = "app"
- cluster_name = "${aws_ecs_cluster.default.name}"
- service_name = ""
+  source       = "../"
+  namespace    = "cp"
+  stage        = "prod"
+  name         = "app"
+  cluster_name = "${aws_ecs_cluster.default.name}"
+  service_name = ""
+  enabled      = "true"
 }
 
 resource "aws_ecs_cluster" "default" {
