@@ -74,5 +74,5 @@ variable "memory_utilization_threshold" {
 variable "alarm_description" {
   type        = "string"
   description = "The string to format and use as the alarm description."
-  default     = "Average service %v utilization over last %d minute(s) too high over %d period(s)"
+  default     = "Average service %v utilization over last %d minute(s) too high over %v period(s)"
 }
