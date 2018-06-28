@@ -23,6 +23,9 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 ```hcl
 module "ecs_service_alarms" {
   source         = "git::https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms.git?ref=tags/0.1.0"
+  namespace      = "cp"
+  stage          = "prod"
+  name           = "app"
   cluster_name   = "example"
   service_name   = "app"
 }
