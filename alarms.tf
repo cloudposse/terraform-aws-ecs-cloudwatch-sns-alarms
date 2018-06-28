@@ -21,12 +21,12 @@ locals {
   }
 
   dimensions_map = {
-    "with_service" = {
+    "service" = {
       "ClusterName" = "${var.cluster_name}"
       "ServiceName" = "${var.service_name}"
     }
 
-    "without_service" = {
+    "cluster" = {
       "ClusterName" = "${var.cluster_name}"
     }
   }
@@ -46,7 +46,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_utilization_too_high" {
   alarm_actions       = ["${aws_sns_topic.default.arn}"]
   ok_actions          = ["${aws_sns_topic.default.arn}"]
 
-  dimensions = "${local.dimensions_map[var.service_name == "" ? "without_service" : "with_service"]}"
+  dimensions = "${local.dimensions_map[var.service_name == "" ? "cluster" : "service"]}"
 }
 
 resource "aws_cloudwatch_metric_alarm" "memory_utilization_too_high" {
@@ -63,5 +63,5 @@ resource "aws_cloudwatch_metric_alarm" "memory_utilization_too_high" {
   alarm_actions       = ["${aws_sns_topic.default.arn}"]
   ok_actions          = ["${aws_sns_topic.default.arn}"]
 
-  dimensions = "${local.dimensions_map[var.service_name == "" ? "without_service" : "with_service"]}"
+  dimensions = "${local.dimensions_map[var.service_name == "" ? "cluster" : "service"]}"
 }
