@@ -1,7 +1,7 @@
 locals {
   thresholds = {
-    CPUUtilizationThreshold     = "${min(max(var.cpu_utilization_threshold, 0), 100)}"
-    MemoryUtilizationThreshold  = "${min(max(var.memory_utilization_threshold, 0), 100)}"
+    CPUUtilizationThreshold    = "${min(max(var.cpu_utilization_threshold, 0), 100)}"
+    MemoryUtilizationThreshold = "${min(max(var.memory_utilization_threshold, 0), 100)}"
   }
 }
 
