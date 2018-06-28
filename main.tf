@@ -17,7 +17,7 @@ resource "aws_sns_topic_policy" "default" {
 }
 
 data "aws_iam_policy_document" "sns_topic_policy" {
-  count     = "${local.enabled}"
+  count = "${local.enabled}"
 
   statement {
     actions = [
