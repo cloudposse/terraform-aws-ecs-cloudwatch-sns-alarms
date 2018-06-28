@@ -45,6 +45,7 @@ variable "cluster_name" {
 variable "service_name" {
   type        = "string"
   description = "The name of the ECS Service in the ECS cluster to monitor."
+  default     = ""
 }
 
 variable "evaluation_periods" {
