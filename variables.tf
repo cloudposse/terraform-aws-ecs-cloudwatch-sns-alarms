@@ -37,22 +37,9 @@ variable "enabled" {
   default     = "true"
 }
 
-variable "create_sns_topic" {
-  type        = "string"
-  description = "Determines if a new sns topic will be generated. If set to false, the existing sns_topic_name variable must be set."
-  default     = "true"
-}
-
-variable "sns_topic_name" {
-  type        = "string"
-  description = "Name of existing SNS topic to use for alarm and ok actions, instead of generating a new one."
-  default     = ""
-}
-
-variable "additional_notify_arns" {
+variable "notify_arns" {
   type        = "list"
-  description = "Optional list of additional ARNs to notify on alarm and ok actions."
-  default     = []
+  description = "A list of ARNs (i.e. SNS Topic ARN) to notify on alarm and ok actions."
 }
 
 variable "cluster_name" {

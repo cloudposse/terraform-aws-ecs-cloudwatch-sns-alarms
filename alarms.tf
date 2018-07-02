@@ -43,8 +43,8 @@ resource "aws_cloudwatch_metric_alarm" "cpu_utilization_too_high" {
   statistic           = "Average"
   threshold           = "${local.thresholds["CPUUtilizationThreshold"]}"
   alarm_description   = "${format(var.alarm_description, "CPU", var.period/60, var.evaluation_periods)}"
-  alarm_actions       = ["${local.sns_topic_arn}", "${var.additional_notify_arns}"]
-  ok_actions          = ["${local.sns_topic_arn}", "${var.additional_notify_arns}"]
+  alarm_actions       = ["${var.notify_arns}"]
+  ok_actions          = ["${var.notify_arns}"]
 
   dimensions = "${local.dimensions_map[var.service_name == "" ? "cluster" : "service"]}"
 }
@@ -60,8 +60,8 @@ resource "aws_cloudwatch_metric_alarm" "memory_utilization_too_high" {
   statistic           = "Average"
   threshold           = "${local.thresholds["MemoryUtilizationThreshold"]}"
   alarm_description   = "${format(var.alarm_description, "Memory", var.period/60, var.evaluation_periods)}"
-  alarm_actions       = ["${local.sns_topic_arn}", "${var.additional_notify_arns}"]
-  ok_actions          = ["${local.sns_topic_arn}", "${var.additional_notify_arns}"]
+  alarm_actions       = ["${var.notify_arns}"]
+  ok_actions          = ["${var.notify_arns}"]
 
   dimensions = "${local.dimensions_map[var.service_name == "" ? "cluster" : "service"]}"
 }
