@@ -52,7 +52,7 @@ locals {
 
 resource "aws_cloudwatch_metric_alarm" "cpu_utilization_high" {
   count               = "${local.enabled}"
-  alarm_name          = "${module.cpu_utilization_high_alarm_label}"
+  alarm_name          = "${module.cpu_utilization_high_alarm_label.id}"
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = "${var.cpu_utilization_high_evaluation_periods}"
   metric_name         = "CPUUtilization"
@@ -86,7 +86,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_utilization_low" {
 
 resource "aws_cloudwatch_metric_alarm" "memory_utilization_high" {
   count               = "${local.enabled}"
-  alarm_name          = "${module.memory_utilization_high_alarm_label}"
+  alarm_name          = "${module.memory_utilization_high_alarm_label.id}"
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = "${var.memory_utilization_high_evaluation_periods}"
   metric_name         = "MemoryUtilization"
@@ -103,7 +103,7 @@ resource "aws_cloudwatch_metric_alarm" "memory_utilization_high" {
 
 resource "aws_cloudwatch_metric_alarm" "memory_utilization_low" {
   count               = "${local.enabled}"
-  alarm_name          = "${module.memory_utilization_low_alarm_label}"
+  alarm_name          = "${module.memory_utilization_low_alarm_label.id}"
   comparison_operator = "LessThanThreshold"
   evaluation_periods  = "${var.memory_utilization_low_evaluation_periods}"
   metric_name         = "MemoryUtilization"
