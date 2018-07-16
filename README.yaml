@@ -23,7 +23,7 @@ badges:
     url: "https://travis-ci.org/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms"
   - name: "Latest Release"
     image: "https://img.shields.io/github/release/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms.svg"
-    url: "https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms/releases"
+    url: "https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms/releases/latest"
   - name: "Slack Community"
     image: "https://slack.cloudposse.com/badge.svg"
     url: "https://slack.cloudposse.com"
@@ -88,14 +88,8 @@ include:
 # Contributors to this project
 contributors:
   - name: "Erik Osterman"
-    homepage: "https://github.com/osterman"
-    avatar: "http://s.gravatar.com/avatar/88c480d4f73b813904e00a5695a454cb?s=144"
     github: "osterman"
   - name: "Jamie Nelson"
-    homepage: "https://github.com/Jamie-BitFlight"
-    avatar: "https://avatars0.githubusercontent.com/u/25075504?s=144&u=ac7e53bda3706cb9d51907808574b6d342703b3e&v=4"
     github: "Jamie-BitFlight"
   - name: "Sarkis Varozian"
-    homepage: "https://github.com/sarkis"
-    avatar: "https://avatars3.githubusercontent.com/u/42673?s=144&v=4"
     github: "sarkis"
