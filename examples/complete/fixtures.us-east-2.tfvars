@@ -6,7 +6,7 @@ namespace = "eg"
 
 stage = "test"
 
-name = "ecs-cloudwatch-autoscaling"
+name = "ecs-cloudwatch-sns-alarms"
 
 vpc_cidr_block = "172.16.0.0/16"
 
