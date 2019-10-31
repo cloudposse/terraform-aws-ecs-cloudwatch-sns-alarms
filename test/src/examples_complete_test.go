@@ -104,4 +104,24 @@ func TestExamplesComplete(t *testing.T) {
 	taskRoleArn := terraform.Output(t, terraformOptions, "task_role_arn")
 	// Verify we're getting back the outputs we expect
 	assert.Equal(t, "arn:aws:iam::126450723953:role/eg-test-ecs-cloudwatch-sns-alarms-task", taskRoleArn)
+
+	// Run `terraform output` to get the value of an output variable
+	cpuUtilizationHighCloudwatchMetricAlarmId := terraform.Output(t, terraformOptions, "cpu_utilization_high_cloudwatch_metric_alarm_id")
+	// Verify we're getting back the outputs we expect
+	assert.Equal(t, "eg-test-ecs-cloudwatch-sns-alarms-cpu-utilization-high", cpuUtilizationHighCloudwatchMetricAlarmId)
+
+	// Run `terraform output` to get the value of an output variable
+	cpuUtilizationLowCloudwatchMetricAlarmId := terraform.Output(t, terraformOptions, "cpu_utilization_low_cloudwatch_metric_alarm_id")
+	// Verify we're getting back the outputs we expect
+	assert.Equal(t, "eg-test-ecs-cloudwatch-sns-alarms-cpu-utilization-low", cpuUtilizationLowCloudwatchMetricAlarmId)
+
+	// Run `terraform output` to get the value of an output variable
+	memoryUtilizationHighCloudwatchMetricAlarmId := terraform.Output(t, terraformOptions, "memory_utilization_high_cloudwatch_metric_alarm_id")
+	// Verify we're getting back the outputs we expect
+	assert.Equal(t, "eg-test-ecs-cloudwatch-sns-alarms-memory-utilization-high", memoryUtilizationHighCloudwatchMetricAlarmId)
+
+	// Run `terraform output` to get the value of an output variable
+	memoryUtilizationLowCloudwatchMetricAlarmId := terraform.Output(t, terraformOptions, "memory_utilization_low_cloudwatch_metric_alarm_id")
+	// Verify we're getting back the outputs we expect
+	assert.Equal(t, "eg-test-ecs-cloudwatch-sns-alarms-memory-utilization-low", memoryUtilizationLowCloudwatchMetricAlarmId)
 }
