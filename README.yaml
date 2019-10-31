@@ -18,9 +18,9 @@ github_repo: cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms
 
 # Badges to display
 badges:
-  - name: "Build Status"
-    image: "https://travis-ci.org/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms.svg?branch=master"
-    url: "https://travis-ci.org/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms"
+  - name: "Codefresh Build Status"
+    image: "https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-ecs-cloudwatch-sns-alarms?type=cf-1"
+    url: "https://g.codefresh.io/public/accounts/cloudposse/pipelines/5dba068f5c2e9732db3ab3fb"
   - name: "Latest Release"
     image: "https://img.shields.io/github/release/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms.svg"
     url: "https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms/releases/latest"
@@ -63,11 +63,15 @@ description: |-
 
 # How to use this project
 usage: |-
+  For a complete example, see [examples/complete](examples/complete).
+
+  For automated tests of the complete example using `bats` and `Terratest`, see [test](test).
+
   ```hcl
   module "ecs_service_alarms" {
-    source         = "git::https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms.git?ref=tags/0.1.0"
-    namespace      = "cp"
-    stage          = "prod"
+    source         = "git::https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms.git?ref=master"
+    namespace      = "eg"
+    stage          = "staging"
     name           = "app"
     cluster_name   = "example"
     service_name   = "app"
@@ -93,3 +97,5 @@ contributors:
     github: "Jamie-BitFlight"
   - name: "Sarkis Varozian"
     github: "sarkis"
+  - name: "Andriy Knysh"
+    github: "aknysh"
