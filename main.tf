@@ -1,5 +1,5 @@
 module "cpu_utilization_high_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.16.0"
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.17.0"
   enabled    = var.enabled
   name       = var.name
   namespace  = var.namespace
@@ -10,7 +10,7 @@ module "cpu_utilization_high_alarm_label" {
 }
 
 module "cpu_utilization_low_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.16.0"
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.17.0"
   enabled    = var.enabled
   name       = var.name
   namespace  = var.namespace
@@ -21,7 +21,7 @@ module "cpu_utilization_low_alarm_label" {
 }
 
 module "memory_utilization_high_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.16.0"
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.17.0"
   enabled    = var.enabled
   name       = var.name
   namespace  = var.namespace
@@ -32,7 +32,7 @@ module "memory_utilization_high_alarm_label" {
 }
 
 module "memory_utilization_low_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.16.0"
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.17.0"
   enabled    = var.enabled
   name       = var.name
   namespace  = var.namespace
