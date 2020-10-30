@@ -94,7 +94,7 @@ module "ecs_service_alarms" {
 | Name | Version |
 |------|---------|
 | terraform | >= 0.12 |
-| aws | >= 3.1 |
+| aws | >= 2.0 |
 | local | >= 1.2 |
 | null | >= 2.0 |
 | template | >= 2.0 |
@@ -103,7 +103,7 @@ module "ecs_service_alarms" {
 
 | Name | Version |
 |------|---------|
-| aws | >= 3.1 |
+| aws | >= 2.0 |
 
 ## Inputs
 
