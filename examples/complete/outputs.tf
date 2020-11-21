@@ -48,11 +48,6 @@ output "service_name" {
   value       = module.ecs_alb_service_task.service_name
 }
 
-output "service_role_arn" {
-  description = "ECS Service role ARN"
-  value       = module.ecs_alb_service_task.service_role_arn
-}
-
 output "task_exec_role_name" {
   description = "ECS Task role name"
   value       = module.ecs_alb_service_task.task_exec_role_name
