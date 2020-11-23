@@ -1,45 +1,29 @@
 module "cpu_utilization_high_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.17.0"
-  enabled    = var.enabled
-  name       = var.name
-  namespace  = var.namespace
-  stage      = var.stage
-  attributes = compact(concat(var.attributes, ["cpu", "utilization", "high"]))
-  delimiter  = var.delimiter
-  tags       = var.tags
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.21.0"
+  attributes = ["cpu", "utilization", "high"]
+
+  context = module.this.context
 }
 
 module "cpu_utilization_low_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.17.0"
-  enabled    = var.enabled
-  name       = var.name
-  namespace  = var.namespace
-  stage      = var.stage
-  attributes = compact(concat(var.attributes, ["cpu", "utilization", "low"]))
-  delimiter  = var.delimiter
-  tags       = var.tags
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.21.0"
+  attributes = ["cpu", "utilization", "low"]
+
+  context = module.this.context
 }
 
 module "memory_utilization_high_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.17.0"
-  enabled    = var.enabled
-  name       = var.name
-  namespace  = var.namespace
-  stage      = var.stage
-  attributes = compact(concat(var.attributes, ["memory", "utilization", "high"]))
-  delimiter  = var.delimiter
-  tags       = var.tags
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.21.0"
+  attributes = ["memory", "utilization", "high"]
+
+  context = module.this.context
 }
 
 module "memory_utilization_low_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.17.0"
-  enabled    = var.enabled
-  name       = var.name
-  namespace  = var.namespace
-  stage      = var.stage
-  attributes = compact(concat(var.attributes, ["memory", "utilization", "low"]))
-  delimiter  = var.delimiter
-  tags       = var.tags
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.21.0"
+  attributes = ["memory", "utilization", "low"]
+
+  context = module.this.context
 }
 
 locals {
@@ -62,7 +46,7 @@ locals {
 }
 
 resource "aws_cloudwatch_metric_alarm" "cpu_utilization_high" {
-  count               = var.enabled ? 1 : 0
+  count               = module.this.enabled ? 1 : 0
   alarm_name          = module.cpu_utilization_high_alarm_label.id
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = var.cpu_utilization_high_evaluation_periods
@@ -87,7 +71,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_utilization_high" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "cpu_utilization_low" {
-  count               = var.enabled ? 1 : 0
+  count               = module.this.enabled ? 1 : 0
   alarm_name          = module.cpu_utilization_low_alarm_label.id
   comparison_operator = "LessThanThreshold"
   evaluation_periods  = var.cpu_utilization_low_evaluation_periods
@@ -112,7 +96,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_utilization_low" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "memory_utilization_high" {
-  count               = var.enabled ? 1 : 0
+  count               = module.this.enabled ? 1 : 0
   alarm_name          = module.memory_utilization_high_alarm_label.id
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = var.memory_utilization_high_evaluation_periods
@@ -137,7 +121,7 @@ resource "aws_cloudwatch_metric_alarm" "memory_utilization_high" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "memory_utilization_low" {
-  count               = var.enabled ? 1 : 0
+  count               = module.this.enabled ? 1 : 0
   alarm_name          = module.memory_utilization_low_alarm_label.id
   comparison_operator = "LessThanThreshold"
   evaluation_periods  = var.memory_utilization_low_evaluation_periods

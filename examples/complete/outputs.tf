@@ -14,12 +14,12 @@ output "vpc_cidr" {
 }
 
 output "container_definition_json" {
-  value       = module.container_definition.json
+  value       = module.container_definition.json_map_encoded_list
   description = "JSON encoded list of container definitions for use with other terraform resources such as aws_ecs_task_definition"
 }
 
 output "container_definition_json_map" {
-  value       = module.container_definition.json_map
+  value       = module.container_definition.json_map_encoded
   description = "JSON encoded container definitions for use with other terraform resources such as aws_ecs_task_definition"
 }
 
@@ -46,11 +46,6 @@ output "ecs_exec_role_policy_name" {
 output "service_name" {
   description = "ECS Service name"
   value       = module.ecs_alb_service_task.service_name
-}
-
-output "service_role_arn" {
-  description = "ECS Service role ARN"
-  value       = module.ecs_alb_service_task.service_role_arn
 }
 
 output "task_exec_role_name" {

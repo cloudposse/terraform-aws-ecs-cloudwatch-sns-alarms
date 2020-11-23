@@ -2,50 +2,32 @@ provider "aws" {
   region = var.region
 }
 
-module "label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.17.0"
-  namespace  = var.namespace
-  name       = var.name
-  stage      = var.stage
-  delimiter  = var.delimiter
-  attributes = var.attributes
-  tags       = var.tags
-}
-
 module "vpc" {
-  source     = "git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=tags/0.8.1"
-  namespace  = var.namespace
-  stage      = var.stage
-  name       = var.name
-  delimiter  = var.delimiter
-  attributes = var.attributes
+  source     = "git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=tags/0.18.0"
   cidr_block = var.vpc_cidr_block
-  tags       = var.tags
+
+  context = module.this.context
 }
 
 module "subnets" {
-  source               = "git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=tags/0.16.1"
+  source               = "git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=tags/0.31.0"
   availability_zones   = var.availability_zones
-  namespace            = var.namespace
-  stage                = var.stage
-  name                 = var.name
-  attributes           = var.attributes
-  delimiter            = var.delimiter
   vpc_id               = module.vpc.vpc_id
   igw_id               = module.vpc.igw_id
   cidr_block           = module.vpc.vpc_cidr_block
-  nat_gateway_enabled  = false
+  nat_gateway_enabled  = true
   nat_instance_enabled = false
-  tags                 = var.tags
+
+  context = module.this.context
 }
 
 resource "aws_ecs_cluster" "default" {
-  name = module.label.id
-  tags = module.label.tags
+  name = module.this.id
+  tags = module.this.tags
 }
 
 module "container_definition" {
-  source                       = "git::https://github.com/cloudposse/terraform-aws-ecs-container-definition.git?ref=tags/0.21.0"
+  source                       = "git::https://github.com/cloudposse/terraform-aws-ecs-container-definition.git?ref=tags/0.45.2"
   container_name               = var.container_name
   container_image              = var.container_image
   container_memory             = var.container_memory
@@ -58,20 +40,14 @@ module "container_definition" {
 }
 
 module "ecs_alb_service_task" {
-  source                             = "git::https://github.com/cloudposse/terraform-aws-ecs-alb-service-task.git?ref=tags/0.17.0"
-  namespace                          = var.namespace
-  stage                              = var.stage
-  name                               = var.name
-  attributes                         = var.attributes
-  delimiter                          = var.delimiter
+  source                             = "git::https://github.com/cloudposse/terraform-aws-ecs-alb-service-task.git?ref=tags/0.41.0"
   alb_security_group                 = module.vpc.vpc_default_security_group_id
-  container_definition_json          = module.container_definition.json
+  container_definition_json          = module.container_definition.json_map_encoded_list
   ecs_cluster_arn                    = aws_ecs_cluster.default.arn
   launch_type                        = var.ecs_launch_type
   vpc_id                             = module.vpc.vpc_id
   security_group_ids                 = [module.vpc.vpc_default_security_group_id]
   subnet_ids                         = module.subnets.public_subnet_ids
-  tags                               = var.tags
   ignore_changes_task_definition     = var.ignore_changes_task_definition
   network_mode                       = var.network_mode
   assign_public_ip                   = var.assign_public_ip
@@ -82,22 +58,18 @@ module "ecs_alb_service_task" {
   desired_count                      = var.desired_count
   task_memory                        = var.task_memory
   task_cpu                           = var.task_cpu
+
+  context = module.this.context
 }
 
 resource "aws_sns_topic" "sns_topic" {
-  name         = module.label.id
+  name         = module.this.id
   display_name = "Test terraform-aws-ecs-cloudwatch-sns-alarms"
-  tags         = module.label.tags
+  tags         = module.this.tags
 }
 
 module "ecs_cloudwatch_sns_alarms" {
   source       = "../../"
-  namespace    = var.namespace
-  stage        = var.stage
-  name         = var.name
-  attributes   = var.attributes
-  delimiter    = var.delimiter
-  tags         = var.tags
   cluster_name = aws_ecs_cluster.default.name
   service_name = module.ecs_alb_service_task.service_name
 
@@ -124,4 +96,6 @@ module "ecs_cloudwatch_sns_alarms" {
   memory_utilization_high_ok_actions    = [aws_sns_topic.sns_topic.arn]
   memory_utilization_low_alarm_actions  = [aws_sns_topic.sns_topic.arn]
   memory_utilization_low_ok_actions     = [aws_sns_topic.sns_topic.arn]
+
+  context = module.this.context
 }
