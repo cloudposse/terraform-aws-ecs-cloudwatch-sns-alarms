@@ -1,26 +1,30 @@
 module "cpu_utilization_high_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.21.0"
+  source     = "cloudposse/label/null"
+  version    = "0.21.0"
   attributes = ["cpu", "utilization", "high"]
 
   context = module.this.context
 }
 
 module "cpu_utilization_low_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.21.0"
+  source     = "cloudposse/label/null"
+  version    = "0.21.0"
   attributes = ["cpu", "utilization", "low"]
 
   context = module.this.context
 }
 
 module "memory_utilization_high_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.21.0"
+  source     = "cloudposse/label/null"
+  version    = "0.21.0"
   attributes = ["memory", "utilization", "high"]
 
   context = module.this.context
 }
 
 module "memory_utilization_low_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.21.0"
+  source     = "cloudposse/label/null"
+  version    = "0.21.0"
   attributes = ["memory", "utilization", "low"]
 
   context = module.this.context
