@@ -4,7 +4,7 @@ provider "aws" {
 
 module "vpc" {
   source     = "cloudposse/vpc/aws"
-  version    = "0.18.0"
+  version    = "0.18.2"
   cidr_block = var.vpc_cidr_block
 
   context = module.this.context
@@ -12,7 +12,7 @@ module "vpc" {
 
 module "subnets" {
   source               = "cloudposse/dynamic-subnets/aws"
-  version              = "0.31.0"
+  version              = "0.36.0"
   availability_zones   = var.availability_zones
   vpc_id               = module.vpc.vpc_id
   igw_id               = module.vpc.igw_id
@@ -26,11 +26,15 @@ module "subnets" {
 resource "aws_ecs_cluster" "default" {
   name = module.this.id
   tags = module.this.tags
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
 }
 
 module "container_definition" {
   source                       = "cloudposse/ecs-container-definition/aws"
-  version                      = "0.45.2"
+  version                      = "0.47.0"
   container_name               = var.container_name
   container_image              = var.container_image
   container_memory             = var.container_memory
@@ -44,7 +48,7 @@ module "container_definition" {
 
 module "ecs_alb_service_task" {
   source                             = "cloudposse/ecs-alb-service-task/aws"
-  version                            = "0.41.0"
+  version                            = "0.44.0"
   alb_security_group                 = module.vpc.vpc_default_security_group_id
   container_definition_json          = module.container_definition.json_map_encoded_list
   ecs_cluster_arn                    = aws_ecs_cluster.default.arn
@@ -67,9 +71,10 @@ module "ecs_alb_service_task" {
 }
 
 resource "aws_sns_topic" "sns_topic" {
-  name         = module.this.id
-  display_name = "Test terraform-aws-ecs-cloudwatch-sns-alarms"
-  tags         = module.this.tags
+  name              = module.this.id
+  display_name      = "Test terraform-aws-ecs-cloudwatch-sns-alarms"
+  tags              = module.this.tags
+  kms_master_key_id = "alias/aws/sns"
 }
 
 module "ecs_cloudwatch_sns_alarms" {
