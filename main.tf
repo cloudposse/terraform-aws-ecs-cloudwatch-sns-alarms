@@ -1,6 +1,6 @@
 module "cpu_utilization_high_alarm_label" {
   source     = "cloudposse/label/null"
-  version    = "0.22.1"
+  version    = "0.24.1"
   attributes = ["cpu", "utilization", "high"]
 
   context = module.this.context
@@ -8,7 +8,7 @@ module "cpu_utilization_high_alarm_label" {
 
 module "cpu_utilization_low_alarm_label" {
   source     = "cloudposse/label/null"
-  version    = "0.22.1"
+  version    = "0.24.1"
   attributes = ["cpu", "utilization", "low"]
 
   context = module.this.context
@@ -16,7 +16,7 @@ module "cpu_utilization_low_alarm_label" {
 
 module "memory_utilization_high_alarm_label" {
   source     = "cloudposse/label/null"
-  version    = "0.22.1"
+  version    = "0.24.1"
   attributes = ["memory", "utilization", "high"]
 
   context = module.this.context
@@ -24,7 +24,7 @@ module "memory_utilization_high_alarm_label" {
 
 module "memory_utilization_low_alarm_label" {
   source     = "cloudposse/label/null"
-  version    = "0.22.1"
+  version    = "0.24.1"
   attributes = ["memory", "utilization", "low"]
 
   context = module.this.context
