@@ -113,7 +113,7 @@ resource "aws_cloudwatch_metric_alarm" "memory_utilization_high" {
   alarm_description = try(format(
     var.alarm_description,
     "Memory",
-    "Hight",
+    "High",
     var.memory_utilization_high_period / 60,
     var.memory_utilization_high_evaluation_periods
   ), var.alarm_description)
