@@ -96,7 +96,7 @@ module "ecs_service_alarms" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.39.1 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 2.0 |
 
 ## Modules
 
