@@ -1,0 +1,7 @@
+# Upstream changes from _extends are only recognized when modifications are made to this file in the default branch.
+_extends: .github
+repository:
+  name: terraform-aws-ecs-cloudwatch-sns-alarms
+  description: Terraform module to create CloudWatch Alarms on ECS Service level metrics.
+  homepage: https://cloudposse.com/accelerate
+  topics: terraform, terraform-module, ecs, cloudwatch, alarm, sns, alerts, escalations, slack, hcl2
