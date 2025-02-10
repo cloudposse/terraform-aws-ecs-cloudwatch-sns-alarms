@@ -72,6 +72,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_utilization_high" {
   ok_actions    = compact(var.cpu_utilization_high_ok_actions)
 
   dimensions = local.dimensions_map[var.service_name == "" ? "cluster" : "service"]
+  tags       = module.cpu_utilization_high_alarm_label.tags
 }
 
 resource "aws_cloudwatch_metric_alarm" "cpu_utilization_low" {
@@ -97,6 +98,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_utilization_low" {
   ok_actions    = compact(var.cpu_utilization_low_ok_actions)
 
   dimensions = local.dimensions_map[var.service_name == "" ? "cluster" : "service"]
+  tags       = module.cpu_utilization_low_alarm_label.tags
 }
 
 resource "aws_cloudwatch_metric_alarm" "memory_utilization_high" {
@@ -122,6 +124,7 @@ resource "aws_cloudwatch_metric_alarm" "memory_utilization_high" {
   ok_actions    = compact(var.memory_utilization_high_ok_actions)
 
   dimensions = local.dimensions_map[var.service_name == "" ? "cluster" : "service"]
+  tags       = module.memory_utilization_high_alarm_label.tags
 }
 
 resource "aws_cloudwatch_metric_alarm" "memory_utilization_low" {
@@ -147,4 +150,5 @@ resource "aws_cloudwatch_metric_alarm" "memory_utilization_low" {
   ok_actions    = compact(var.memory_utilization_low_ok_actions)
 
   dimensions = local.dimensions_map[var.service_name == "" ? "cluster" : "service"]
+  tags       = module.memory_utilization_low_alarm_label.tags
 }
