@@ -58,12 +58,12 @@ func TestExamplesComplete(t *testing.T) {
 	// Run `terraform output` to get the value of an output variable
 	ecsClusterId := terraform.Output(t, terraformOptions, "ecs_cluster_id")
 	// Verify we're getting back the outputs we expect
-	assert.Equal(t, "arn:aws:ecs:us-east-2:126450723953:cluster/eg-test-ecs-cloudwatch-sns-alarms", ecsClusterId)
+	assert.Equal(t, "arn:aws:ecs:us-east-2:799847381734:cluster/eg-test-ecs-cloudwatch-sns-alarms", ecsClusterId)
 
 	// Run `terraform output` to get the value of an output variable
 	ecsClusterArn := terraform.Output(t, terraformOptions, "ecs_cluster_arn")
 	// Verify we're getting back the outputs we expect
-	assert.Equal(t, "arn:aws:ecs:us-east-2:126450723953:cluster/eg-test-ecs-cloudwatch-sns-alarms", ecsClusterArn)
+	assert.Equal(t, "arn:aws:ecs:us-east-2:799847381734:cluster/eg-test-ecs-cloudwatch-sns-alarms", ecsClusterArn)
 
 	// Run `terraform output` to get the value of an output variable
 	ecsExecRolePolicyName := terraform.Output(t, terraformOptions, "ecs_exec_role_policy_name")
@@ -88,7 +88,7 @@ func TestExamplesComplete(t *testing.T) {
 	// Run `terraform output` to get the value of an output variable
 	taskExecRoleArn := terraform.Output(t, terraformOptions, "task_exec_role_arn")
 	// Verify we're getting back the outputs we expect
-	assert.Equal(t, "arn:aws:iam::126450723953:role/eg-test-ecs-cloudwatch-sns-alarms-exec", taskExecRoleArn)
+	assert.Equal(t, "arn:aws:iam::799847381734:role/eg-test-ecs-cloudwatch-sns-alarms-exec", taskExecRoleArn)
 
 	// Run `terraform output` to get the value of an output variable
 	taskRoleName := terraform.Output(t, terraformOptions, "task_role_name")
@@ -98,7 +98,7 @@ func TestExamplesComplete(t *testing.T) {
 	// Run `terraform output` to get the value of an output variable
 	taskRoleArn := terraform.Output(t, terraformOptions, "task_role_arn")
 	// Verify we're getting back the outputs we expect
-	assert.Equal(t, "arn:aws:iam::126450723953:role/eg-test-ecs-cloudwatch-sns-alarms-task", taskRoleArn)
+	assert.Equal(t, "arn:aws:iam::799847381734:role/eg-test-ecs-cloudwatch-sns-alarms-task", taskRoleArn)
 
 	// Run `terraform output` to get the value of an output variable
 	cpuUtilizationHighCloudwatchMetricAlarmId := terraform.Output(t, terraformOptions, "cpu_utilization_high_cloudwatch_metric_alarm_id")
