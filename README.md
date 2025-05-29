@@ -3,7 +3,7 @@
 <!-- markdownlint-disable -->
 <a href="https://cpco.io/homepage"><img src="https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms/blob/main/.github/banner.png?raw=true" alt="Project Banner"/></a><br/>
     <p align="right">
-<a href="https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms/releases/latest"><img src="https://img.shields.io/github/release/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms.svg?style=for-the-badge" alt="Latest Release"/></a><a href="https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms/commits"><img src="https://img.shields.io/github/last-commit/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms.svg?style=for-the-badge" alt="Last Updated"/></a><a href="https://slack.cloudposse.com"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a></p>
+<a href="https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms/releases/latest"><img src="https://img.shields.io/github/release/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms.svg?style=for-the-badge" alt="Latest Release"/></a><a href="https://github.com/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms/commits"><img src="https://img.shields.io/github/last-commit/cloudposse/terraform-aws-ecs-cloudwatch-sns-alarms.svg?style=for-the-badge" alt="Last Updated"/></a><a href="https://cloudposse.com/slack"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a></p>
 <!-- markdownlint-restore -->
 
 <!--
@@ -169,6 +169,11 @@ module "ecs_service_alarms" {
 | <a name="output_memory_utilization_low_cloudwatch_metric_alarm_arn"></a> [memory\_utilization\_low\_cloudwatch\_metric\_alarm\_arn](#output\_memory\_utilization\_low\_cloudwatch\_metric\_alarm\_arn) | Memory utilization low CloudWatch metric alarm ARN |
 | <a name="output_memory_utilization_low_cloudwatch_metric_alarm_id"></a> [memory\_utilization\_low\_cloudwatch\_metric\_alarm\_id](#output\_memory\_utilization\_low\_cloudwatch\_metric\_alarm\_id) | Memory utilization low CloudWatch metric alarm ID |
 <!-- markdownlint-restore -->
+
+
+
+
+
 
 
 ## Related Projects
